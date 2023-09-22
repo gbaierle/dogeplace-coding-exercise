@@ -73,5 +73,8 @@ class ClientModel {
 		if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
 			throw new \Exception('Invalid email');
 		}
+		if ($this->helper->arraySearchI($data['email'], $this->clientData, 'email') !== false) {
+			throw new \Exception('Email already exists');
+		}
 	}
 }

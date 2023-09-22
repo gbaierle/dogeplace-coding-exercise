@@ -90,4 +90,16 @@ class ClientTest extends TestCase {
 		$this->expectException(\Exception::class);
 		$this->client->createClient($client);
 	}
+
+	public function testEmailShouldBeUnique() {
+		$client = [
+			'username' => 'newuser',
+			'name' => 'New User',
+			'email' => 'arojas@dogeplace.com',
+			'phone' => '5555555'
+		];
+
+		$this->expectException(\Exception::class);
+		$this->client->createClient($client);
+	}
 }

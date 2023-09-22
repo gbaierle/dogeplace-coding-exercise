@@ -22,7 +22,6 @@ class BookingModel {
 	public function createBooking(array $data): array {
 		$bookings = $this->bookingData;
 
-		$dogsAverageAge = $this->getDogsAverageAge($data['clientid']);
 		$data['id'] = end($bookings)['id'] + 1;
 		$data['price'] = $this->canHaveDiscount($data['clientid']) ? $data['price'] * 0.9 : $data['price'];
 
