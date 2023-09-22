@@ -1,0 +1,50 @@
+GET http://localhost:6666/dogs
+
+###
+
+GET http://localhost:6666/clients
+
+###
+
+POST http://localhost:6666/client
+content-type: application/json
+
+{
+    "username": "newuser",
+    "name": "New User",
+    "email": "newuser@dogeplace.com",
+    "phone": "5555555"
+}
+
+###
+
+PUT http://localhost:6666/client
+content-type: application/json
+
+{
+    "id": 5,
+    "username": "newuser_updated",
+    "name": "New User",
+    "email": "newuser@dogeplace.com",
+    "phone": "5555555"
+}
+
+###
+
+DELETE http://localhost:6666/client/5
+
+###
+
+GET http://localhost:6666/bookings
+
+###
+
+POST http://localhost:6666/booking
+content-type: application/json
+
+{
+    "clientid": 5,
+    "price": 150,
+    "checkindate": "2021-08-04 15:00:00",
+    "checkoutdate": "2021-08-11 15:00:00"
+}
