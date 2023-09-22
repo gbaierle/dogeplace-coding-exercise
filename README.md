@@ -1,0 +1,1 @@
+- Add possibility to book a new client (considering price, check-in date and check-out date)
