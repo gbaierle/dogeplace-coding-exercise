@@ -46,4 +46,18 @@ class BookingTest extends TestCase {
 		$this->assertIsArray($result);
 		$this->assertArrayHasKey('id', $result);
 	}
+
+	public function testCreateBookingWithDiscount() {
+		$data = [
+			"clientid" => 1,
+			"price" => 100,
+			"checkindate" => (new DateTime())->format('Y-m-d H:i:s'),
+			"checkoutdate" => (new DateTime('+2 days'))->format('Y-m-d H:i:s')
+		];
+
+		$result = $this->booking->createBooking($data);
+
+		$this->assertIsArray($result);
+		$this->assertEquals($result['price'], $data['price'] * 0.9);
+	}
 }
