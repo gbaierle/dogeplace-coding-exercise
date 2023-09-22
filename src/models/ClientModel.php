@@ -21,6 +21,8 @@ class ClientModel {
 	}
 
 	public function createClient($data) {
+		$this->validate($data);
+
 		$clients = $this->getClients();
 
 		$data['id'] = end($clients)['id'] + 1;
@@ -65,5 +67,11 @@ class ClientModel {
 			}
 		}
 		return null;
+	}
+
+	private function validate($data) {
+		if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
+			throw new \Exception('Invalid email');
+		}
 	}
 }

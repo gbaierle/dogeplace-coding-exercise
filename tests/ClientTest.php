@@ -78,4 +78,16 @@ class ClientTest extends TestCase {
 		$this->assertNotNull($client);
 		$this->assertArrayHasKey('deletedat', $client);
 	}
+
+	public function testCreateWithInvalidEmailShouldReturnException() {
+		$client = [
+			'username' => 'newuser',
+			'name' => 'New User',
+			'email' => 'newuser@invalid',
+			'phone' => '5555555'
+		];
+
+		$this->expectException(\Exception::class);
+		$this->client->createClient($client);
+	}
 }

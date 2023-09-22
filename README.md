@@ -1,3 +1,4 @@
 - Add possibility to book a new client (considering price, check-in date and check-out date);
 - Add possibility to give 10% discount in the booking if the average age of dogs of a client registered is less than 10 years;
 - Add possibility to soft delete a client
+- Validate client email
