@@ -2,6 +2,7 @@
 
 namespace Src\models;
 
+use DateTime;
 use Src\helpers\Helpers;
 
 class ClientModel {
@@ -42,6 +43,18 @@ class ClientModel {
 		$this->helper->putJson($clients, 'clients');
 
 		return $updateClient;
+	}
+
+	public function deleteClient($id) {
+		$clients = $this->getClients();
+		foreach ($clients as $key => $client) {
+			if ($client['id'] == $id) {
+				$client['deletedat'] = (new DateTime())->format('Y-m-d H:i:s');
+				$clients[$key] = $client;
+			}
+		}
+
+		$this->helper->putJson($clients, 'clients');
 	}
 
 	public function getClientById($id) {

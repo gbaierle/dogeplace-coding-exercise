@@ -23,6 +23,10 @@ class Client {
 		return $this->getClientModel()->updateClient($client);
 	}
 
+	public function deleteClient($id) {
+		return $this->getClientModel()->deleteClient($id);
+	}
+
 	public function getClientById($id) {
 		return $this->getClientModel()->getClientById($id);
 	}

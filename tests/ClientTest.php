@@ -56,11 +56,26 @@ class ClientTest extends TestCase {
 			'phone' => '2222222'
 		];
 
-
 		$this->client->updateClient($client);
 		$results = $this->client->getClients();
 
 		$this->assertIsArray($results);
 		$this->assertIsNotObject($results);
+	}
+
+	public function testClientSoftDelete() {
+		$client = [
+			'username' => 'newuser',
+			'name' => 'New User',
+			'email' => 'newuser@dogeplace.com',
+			'phone' => '5555555'
+		];
+
+		$newClient = $this->client->createClient($client);
+		$this->client->deleteClient($newClient['id']);
+
+		$client = $this->client->getClientById($newClient['id']);
+		$this->assertNotNull($client);
+		$this->assertArrayHasKey('deletedat', $client);
 	}
 }
